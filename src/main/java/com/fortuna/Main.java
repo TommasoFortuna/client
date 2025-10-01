@@ -17,16 +17,19 @@ public class Main {
         String ip = scan.nextLine();
         System.out.println("Inserisci porta del server");
         int port = Integer.parseInt(scan.nextLine());
-        
+
         Socket mioSocket = new Socket(ip, port);
 
         BufferedReader in = new BufferedReader(new InputStreamReader(mioSocket.getInputStream()));
         PrintWriter out = new PrintWriter(mioSocket.getOutputStream(), true);
 
-        System.out.println("Inserisci stringa: ");
-        String stringaMinuscola = scan.nextLine();
-        out.println(stringaMinuscola);
-        System.out.println(in.readLine());
+        String stringaMinuscola;
+        do {
+            System.out.println("Inserisci stringa: ");
+            stringaMinuscola = scan.nextLine();
+            out.println(stringaMinuscola);
+            System.out.println("Stringa ricevuta: " + in.readLine());
+        } while (!stringaMinuscola.equals("!"));
 
         mioSocket.close();
         scan.close();
