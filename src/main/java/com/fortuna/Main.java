@@ -27,9 +27,15 @@ public class Main {
         do {
             System.out.println("Inserisci stringa: ");
             stringaMinuscola = scan.nextLine();
+
+            if (stringaMinuscola.equals("exit")) {
+                out.println("!");
+                break;
+            }
             out.println(stringaMinuscola);
+
             System.out.println("Stringa ricevuta: " + in.readLine());
-        } while (!stringaMinuscola.equals("!"));
+        } while (true);
 
         mioSocket.close();
         scan.close();
